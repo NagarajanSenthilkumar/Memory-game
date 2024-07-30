@@ -1,0 +1,259 @@
+@import url(https://fonts.googleapis.com/css?family=Syne:regular,500,600,700,800);
+
+
+:root {
+    --header-height: 3.5rem;
+    /*===== Colors =====*/
+    /*color mode HSL (hue, saturation, lightness)*/
+    /*
+      change favorite color
+      Default: hsl(230, 55%, 55%)
+      Purple: hsl(245, 55%, 55%) -Blue: hsl(210,55%, 55%)
+      Pink: hsl(340,55%, 55%) - green: hsl(162, 55% 55%)
+      Orange: hsl(14,55%, 55%)
+  
+      for more colors visit:
+      -> Choose any colors
+      -> Click on tab (Color Conversation)
+      -> Copy the color mode (HSL)
+      */
+    --hue: 230;
+    --first-color: hsl(var(--hue), 55%, 55%);
+    --first-color-light: hsl(var(--hue), 55%, 65%);
+    --first-color-alt: hsl(var(--hue), 50%, 50%);
+    --title-color: hsl(var(--hue), 30%, 95%);
+    --text-color: hsl(var(--hue), 20%, 80%);
+    --text-color-light: hsl(var(--hue), 20%, 70%);
+    /*backround #181E39 */
+    --body-color: hsl(var(--hue), 40%, 16%); 
+    /* container #1F2547 */
+    --container-color: hsl(var(--hue), 40%, 20%);
+  
+    /*===== FONTS AND TYPOGRAPHY =====*/
+    /*.5rem = 8px | 1rem =16px ..*/
+    --body--font: "Syne", sans-serif;
+    --biggest-font-size: 3rem;
+    --big-font-size: 1.5rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: 0.938rem;
+    --small-font-size: 0.813rem;
+  
+    /*===== FONT WEIGHT =====*/
+    --font-regular: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+  
+    /*===== Z INDEX =====*/
+    --z-tooltip: 10;
+    --z-fixed: 100;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background:var(--body-color);
+  }
+  .wrapper{
+    padding: 25px;
+    border-radius: 10px;
+    background: #F8F8F8;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  .cards, .card, .view{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cards{
+    height: 400px;
+    width: 400px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .cards .card{
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    position: relative;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    height: calc(100% / 5 - 10px);
+    width: calc(100% / 5 - 10px);
+  }
+  .card.shake{
+    animation: shake 0.35s ease-in-out;
+  }
+  @keyframes shake {
+    0%, 100%{
+      transform: translateX(0);
+    }
+    20%{
+      transform: translateX(-13px);
+    }
+    40%{
+      transform: translateX(13px);
+    }
+    60%{
+      transform: translateX(-8px);
+    }
+    80%{
+      transform: translateX(8px);
+    }
+  }
+  .card .view{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 7px;
+    background:#fff;
+    pointer-events: none;
+    backface-visibility: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.25s linear;
+  }
+  .card .front-view img{
+    width: 19px;
+  }
+  .card .back-view img{
+    max-width: 50px;
+  }
+  .card .back-view{
+    transform: rotateY(-180deg);
+  }
+  .card.flip .back-view{
+    transform: rotateY(0);
+  }
+  .card.flip .front-view{
+    transform: rotateY(180deg);
+  }
+  /* Modal styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#playAgainBtn {
+  background-color: var(--body-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+#playAgainBtn:hover {
+  background-color: var(--container-color);
+}
+  @media (min-width: 1440px) {
+    .cards {
+      width: 600px;
+      height: 600px;
+    }
+    .cards .card {
+      height: calc(100% / 5 - 10px);
+      width: calc(100% / 5 - 10px);
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .cards {
+      width: 500px;
+      height: 500px;
+    }
+    .cards .card {
+      height: calc(100% / 5 - 10px);
+      width: calc(100% / 5 - 10px);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .cards {
+      width: 400px;
+      height: 400px;
+    }
+    .cards .card {
+      height: calc(100% / 5 - 10px);
+      width: calc(100% / 5 - 10px);
+    }
+  }
+  
+  @media (max-width: 426px) {
+    .cards {
+      width: 300px;
+      height: 300px;
+    }
+    .cards .card {
+      height: calc(100% / 5 - 6px);
+      width: calc(100% / 5 - 6px);
+    }
+  }
+  
+  @media (max-width: 375px) {
+    .cards {
+      width: 280px;
+      height: 280px;
+    }
+    .cards .card {
+      height: calc(100% / 5 - 5px);
+      width: calc(100% / 5 - 5px);
+    }
+  }
+  @media (max-width: 320px) {
+    .wrapper {
+      margin-inline: 50px;
+    }
+    .cards {
+      width: 250px;
+      height: 250px;
+    }
+    .cards .card {
+      height: calc(100% / 5 - 5px);
+      width: calc(100% / 5 - 5px);
+    }
+  }
